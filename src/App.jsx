@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/home/Home";
@@ -21,9 +22,15 @@ function App() {
     }
   };
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Routes path="/" element={<Home />} />
+        <Routes path="/:mediaType/:id" element={<Details />} />
+        <Routes path="/explore/:mediaType" element={<Explore />} />
+        <Routes path="/search/:query" element={<SearchResult />} />
+        <Routes path="*" element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
