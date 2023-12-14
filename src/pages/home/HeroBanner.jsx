@@ -45,12 +45,17 @@ const HeroBanner = () => {
           <div className=" flex items-center w-full">
             <input
               type="search"
-              className="w-[calc(100%-100px)] h-[50px] bg-white outline-none border-none rounded-[30px 0 0 30px py-0 px-4 text-sm md:w-[calc(100%-150px)] md:h-[60px]"
+              className="w-[calc(100%-100px)] h-[50px] bg-white outline-none border-none rounded-[30px 0 0 30px] py-0 px-4 text-sm md:w-[calc(100%-150px)] md:h-[60px] md:text-xl md:p-[0px 30px]"
               placeholder="Search for a Movie or TvShow"
               onChange={(e) => setSearch(e.target.value)}
               value={search}
             />
-            <button type="submit">Search</button>
+            <button
+              type="submit"
+              className="w-full h-[50px] bg-gradient text-white outline-none border-none rounded-[ 0 30px 30px 0] text-base cursor-pointer md:w-[150px] md:h-[60px] md:text-lg"
+            >
+              Search
+            </button>
           </div>
         </div>
       </ContentWrapper>
