@@ -21,10 +21,20 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", controlNavbar);
     };
-  });
+  }, [lastScrollY]);
 
   const controlNavbar = () => {
     console.log(window.scrollY);
+    if (window.scrollY > 200) {
+      if (window.scrollY > lastScrollY && !mobileMenu) {
+        setShow("show");
+      } else {
+        setShow("hide");
+      }
+    } else {
+      setShow("top");
+    }
+    setLastScrollY(window.scrollY);
   };
   const openMobileMenu = () => {
     setMobileMenu(true);
