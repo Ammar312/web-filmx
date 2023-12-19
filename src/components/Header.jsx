@@ -17,6 +17,10 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  useEffect(() => {
     window.addEventListener("scroll", controlNavbar);
     return () => {
       window.removeEventListener("scroll", controlNavbar);
@@ -24,12 +28,11 @@ const Header = () => {
   }, [lastScrollY]);
 
   const controlNavbar = () => {
-    console.log(window.scrollY);
     if (window.scrollY > 200) {
       if (window.scrollY > lastScrollY && !mobileMenu) {
-        setShow("show");
-      } else {
         setShow("hide");
+      } else {
+        setShow("show");
       }
     } else {
       setShow("top");
