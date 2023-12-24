@@ -36,6 +36,9 @@ export default {
       boxShadow: {
         shad: "0 0 0.625em #da2f68",
       },
+      transitionTimingFunction: {
+        expo: "cubic-bezier(0.88, -0.35, 0.565, 1.35)",
+      },
     },
   },
   plugins: [],
