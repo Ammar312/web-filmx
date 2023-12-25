@@ -9,8 +9,9 @@ import dayjs from "dayjs";
 import ContentWrapper from "./ContentWrapper";
 import Img from "./lazyLoadImg/Img";
 import PosterFallBack from "../assets/no-poster.png";
-import circleRating from "./circleRating";
+
 import Genres from "./Genres";
+import CirkleRating from "./CirkleRating";
 
 const Carousel = ({ data, loading, endpoint, title }) => {
   const carouselContainer = useRef();
@@ -41,7 +42,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
           onClick={() => navigation("left")}
         />
         <BsFillArrowRightCircleFill
-          className="right-[30px] text-[30px] text-black absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80"
+          className="right-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80"
           onClick={() => navigation("right")}
         />
 
@@ -63,15 +64,12 @@ const Carousel = ({ data, loading, endpoint, title }) => {
                   }
                 >
                   <div className="relative w-full aspect-[1/1.5] bg-cover bg-center mb-[30px] flex items-end justify-between p-[10px]">
-                    <Img
-                      src={posterUrl}
-                      className="w-full h-full object-cover object-center"
-                    />
-
-                    <circleRating
-                      rating={item.vote_average.toFixed(1)}
-                      className="w-[40px] h-[40px] relative top-8 bg-white shrink-0 md:w-[50px] md:h-[50px]"
-                    />
+                    <span className="w-full h-full object-cover object-center">
+                      <Img src={posterUrl} />
+                    </span>
+                    <span className="w-[40px] h-[40px] relative top-8 bg-white rounded-full shrink-0 md:w-[50px] md:h-[50px]">
+                      <CirkleRating rating={item.vote_average.toFixed(1)} />
+                    </span>
                     <Genres
                       data={item.genre_ids.slice(0, 2)}
                       className="hidden relative md:flex md:flex-wrap md:justify-end"
