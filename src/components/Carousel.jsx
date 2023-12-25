@@ -22,10 +22,10 @@ const Carousel = ({ data, loading, endpoint, title }) => {
   const skItem = () => {
     return (
       <div className="w-[125px] shrink-0 md:w-[calc(20%-15px)] lg:w-[calc(20%-16px)]">
-        <div className="rounded-xl w-full aspect-[1/1.5] mb-[30px] skeleton"></div>
+        <div className="rounded-xl w-full aspect-[1/1.5] mb-[30px] skeleton animate-pulse"></div>
         <div className="flex flex-col">
-          <div className="w-full h-5 mb-[10px] skeleton"></div>
-          <div className="w-[75%] h-[20px] skeleton"></div>
+          <div className="w-full h-5 mb-[10px] skeleton animate-pulse"></div>
+          <div className="w-[75%] h-[20px] skeleton animate-pulse"></div>
         </div>
       </div>
     );
@@ -64,16 +64,18 @@ const Carousel = ({ data, loading, endpoint, title }) => {
                   }
                 >
                   <div className="relative w-full aspect-[1/1.5] bg-cover bg-center mb-[30px] flex items-end justify-between p-[10px]">
-                    <span className="w-full h-full object-cover object-center">
-                      <Img src={posterUrl} />
+                    <span className="absolute top-0 left-0 w-full h-full rounded-xl overflow-hidden">
+                      <Img
+                        src={posterUrl}
+                        className="w-full h-full object-cover object-center"
+                      />
                     </span>
                     <span className="w-[40px] h-[40px] relative top-8 bg-white rounded-full shrink-0 md:w-[50px] md:h-[50px]">
                       <CirkleRating rating={item.vote_average.toFixed(1)} />
                     </span>
-                    <Genres
-                      data={item.genre_ids.slice(0, 2)}
-                      className="hidden relative md:flex md:flex-wrap md:justify-end"
-                    />
+                    <span className="hidden relative md:flex md:flex-wrap md:justify-end">
+                      <Genres data={item.genre_ids.slice(0, 2)} />
+                    </span>
                   </div>
                   <div className="text-white flex flex-col">
                     <span className="text-base mb-[10px] line-clamp-1 text-ellipsis md:text-xl">
@@ -91,7 +93,9 @@ const Carousel = ({ data, loading, endpoint, title }) => {
           </div>
         ) : (
           <div className="flex gap-[10px] overflow-y-hidden -mr-5 -ml-5 py-0 px-5 md:gap-5 md:overflow-hidden md:m-0 md:p-0">
-            {" "}
+            {skItem()}
+            {skItem()}
+            {skItem()}
           </div>
         )}
       </ContentWrapper>

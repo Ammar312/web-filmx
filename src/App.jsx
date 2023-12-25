@@ -17,6 +17,7 @@ function App() {
   // console.log(url);
   useEffect(() => {
     fetchApiConfig();
+    genresCall();
   }, []);
   const fetchApiConfig = async () => {
     try {
@@ -32,6 +33,22 @@ function App() {
       console.log(error);
     }
   };
+  const genresCall = async () => {
+    let promises = [];
+    let endpoints = ["movie", "tv"];
+    let allGenres = {};
+    endpoints.forEach((url) => {
+      promises.push(fetchApi(`/genre/${url}/list`));
+    });
+    const data = await Promise.all(promises);
+
+    data.map((genreindex) => {
+      return genreindex.genres?.map((item) => (allGenres[item.id] = item));
+    });
+
+    dispatch(getGenres(allGenres));
+  };
+
   return (
     <BrowserRouter>
       <Header />
