@@ -18,7 +18,17 @@ const Carousel = ({ data, loading, endpoint, title }) => {
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
 
-  const navigation = (direction) => {};
+  const navigation = (direction) => {
+    const container = carouselContainer.current;
+    const scrollAmount =
+      direction === "left"
+        ? container.scrollLeft - (container.offsetWidth + 20)
+        : container.scrollLeft + (container.offsetWidth + 20);
+    container.scrollTo({
+      left: scrollAmount,
+      behavior: "smooth",
+    });
+  };
   const skItem = () => {
     return (
       <div className="w-[125px] shrink-0 md:w-[calc(20%-15px)] lg:w-[calc(20%-16px)]">
@@ -38,7 +48,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
           <div className="text-2xl text-white mb-5 font-normal">{title}</div>
         )}
         <BsFillArrowLeftCircleFill
-          className="left-[30px] text-[30px] text-black absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80"
+          className="left-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80"
           onClick={() => navigation("left")}
         />
         <BsFillArrowRightCircleFill
