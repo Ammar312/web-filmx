@@ -2,6 +2,7 @@ import React from "react";
 import HeroBanner from "./HeroBanner";
 import Trending from "./Trending";
 import Popular from "./Popular";
+import TopRated from "./TopRated";
 
 const Home = () => {
   return (
@@ -9,7 +10,8 @@ const Home = () => {
       <HeroBanner />
       <Trending />
       <Popular />
-      <div className="h-96"></div>
+      <TopRated />
+      {/* <div className="h-96"></div> */}
     </div>
   );
 };

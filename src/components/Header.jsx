@@ -65,7 +65,7 @@ const Header = () => {
   };
   return (
     <header
-      className={`fixed translate-y-0 w-full h-[60px] z-10 flex items-center transition duration-100 ease-in-out ${show} ${
+      className={`fixed translate-y-0 w-full h-[60px] z-30 flex items-center transition duration-100 ease-in-out ${show} ${
         mobileMenu ? "!bg-[#020c1b]" : ""
       } `}
     >

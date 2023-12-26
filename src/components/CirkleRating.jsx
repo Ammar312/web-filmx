@@ -2,8 +2,6 @@ import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-// import "./CirkleRating.css";
-
 const CirkleRating = ({ rating }) => {
   return (
     <div className="bg-black rounded-full p-[2px]">
