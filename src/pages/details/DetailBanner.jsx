@@ -19,6 +19,10 @@ const DetailBanner = ({ video, crew }) => {
   const [videoId, setVideoId] = useState(null);
 
   const _genres = data?.genres?.map((genre) => genre.id);
+  const director = crew?.filter((f) => f.job === "Director");
+  const writer = crew?.filter(
+    (f) => f.job === "Screenplay" || f.job === "Story" || f.job === "Writer"
+  );
 
   const toHoursAndMinutes = (totalMinutes) => {
     const hours = Math.floor(totalMinutes / 60);
@@ -74,6 +78,73 @@ const DetailBanner = ({ video, crew }) => {
                         <span className="text">Watch Trailer</span>
                       </div>
                     </div>
+                    <div className="overview">
+                      <div className="heading">Overview</div>
+                      <div className="description">{data.overview}</div>
+                    </div>
+                    <div className="info">
+                      {data.status && (
+                        <div className="infoItem">
+                          <span className="text bold">Status:</span>
+                          <div className="text">{data.status}</div>
+                        </div>
+                      )}
+                      {data.release_date && (
+                        <div className="infoItem">
+                          <span className="text bold">Release:</span>
+                          <div className="text">
+                            {dayjs(data.release_date).format("MMM D, YYYY")}
+                          </div>
+                        </div>
+                      )}
+                      {data.runtime && (
+                        <div className="infoItem">
+                          <span className="text bold">Runtime:</span>
+                          <div className="text">
+                            {toHoursAndMinutes(data.runtime)}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    {director?.length > 0 && (
+                      <div className="info">
+                        <span className="text bold">Director:</span>
+                        <span className="text">
+                          {director.map((d, i) => (
+                            <span key={i}>
+                              {d.name}
+                              {director.length - 1 !== 1 && ", "}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
+                    {writer.length > 0 && (
+                      <div className="info">
+                        <span className="text bold">Writer:</span>
+                        <span className="text">
+                          {writer.map((d, i) => (
+                            <span key={i}>
+                              {d.name}
+                              {writer.length - 1 !== 1 && ", "}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
+                    {data.created_by > 0 && (
+                      <div className="info">
+                        <span className="text bold">Created By:</span>
+                        <span className="text">
+                          {data.created_by.map((d, i) => (
+                            <span key={i}>
+                              {d.name}
+                              {data.created_by.length - 1 !== 1 && ", "}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </ContentWrapper>
