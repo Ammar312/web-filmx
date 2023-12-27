@@ -9,6 +9,7 @@ import CirkleRating from "../../components/CirkleRating";
 import Genres from "../../components/Genres";
 import Img from "../../components/lazyLoadImg/Img";
 import PosterFallBack from "../../assets/no-poster.png";
+import { PlayIcon } from "./PlayBtn";
 
 const DetailBanner = ({ video, crew }) => {
   const { mediaType, id } = useParams();
@@ -16,6 +17,8 @@ const DetailBanner = ({ video, crew }) => {
   const { url } = useSelector((state) => state.home);
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
+
+  const _genres = data?.genres?.map((genre) => genre.id);
 
   const toHoursAndMinutes = (totalMinutes) => {
     const hours = Math.floor(totalMinutes / 60);
