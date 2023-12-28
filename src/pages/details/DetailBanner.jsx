@@ -10,6 +10,7 @@ import Genres from "../../components/Genres";
 import Img from "../../components/lazyLoadImg/Img";
 import PosterFallBack from "../../assets/no-poster.png";
 import { PlayIcon } from "./PlayBtn";
+import "./detail.css";
 
 const DetailBanner = ({ video, crew }) => {
   const { mediaType, id } = useParams();
@@ -46,70 +47,95 @@ const DetailBanner = ({ video, crew }) => {
               </div>
               <div className="w-full h-[250px] opacityLayer absolute bottom-0 left-0"></div>
               <ContentWrapper>
-                <div className="content">
-                  <div className="left">
+                <div className="flex flex-col gap-6 relative md:gap-[50px] md:flex-row">
+                  <div className="flex-shrink-0">
                     {data.poster_path ? (
                       <Img
-                        className="posterImg"
+                        className="w-full block rounded-xl md:max-w-[350px]"
                         src={url.backdrop + data.poster_path}
                       />
                     ) : (
-                      <Img className={`posterImg`} src={PosterFallBack} />
+                      <Img
+                        className={`w-full block rounded-xl md:max-w-[350px]`}
+                        src={PosterFallBack}
+                      />
                     )}
                   </div>
-                  <div className="right">
-                    <div className="title">
+                  <div className="right text-white">
+                    <div className="title text-[28px] leading-10 md:text-[34px] md:leading-[44px]">
                       {`${data.name || data.title} ${dayjs(
                         data?.release_date
                       ).format("YYYY")}`}
                     </div>
-                    <div className="subtitle">{data.tagline}</div>
-                    <Genres data={_genres} />
-                    <div className="row">
-                      <CirkleRating rating={data.vote_average.toFixed(1)} />
+                    <div className="subtitle text-base mb-[15px] italic opacity-50 md:text-xl">
+                      {data.tagline}
+                    </div>
+                    <span className="mb-[25px] flex-row flex-wrap">
+                      <Genres data={_genres} />
+                    </span>
+                    <div className="row flex items-center gap-[25px] mb-[25px] mt-4">
+                      <span className="max-w-[70px]  md:max-w-[90px] text-white rounded-full">
+                        <CirkleRating rating={data.vote_average.toFixed(1)} />
+                      </span>
                       <div
-                        className="playbtn"
+                        className="playbtn flex items-center gap-5 cursor-pointer"
                         onClick={() => {
                           setShow(true);
                           setVideoId(video.key);
                         }}
                       >
-                        <PlayIcon />
-                        <span className="text">Watch Trailer</span>
+                        <span className="w-[60px] md:w-[80px]">
+                          <PlayIcon />
+                        </span>
+                        <span className="text text-xl transition-all duration-700 ease-in-out hover:text-pink">
+                          Watch Trailer
+                        </span>
                       </div>
                     </div>
-                    <div className="overview">
-                      <div className="heading">Overview</div>
-                      <div className="description">{data.overview}</div>
+                    <div className="overview mb-[25px]">
+                      <div className="heading text-2xl mb-[10px]">Overview</div>
+                      <div className="description leading-6">
+                        {data.overview}
+                      </div>
                     </div>
-                    <div className="info">
+                    <div className="info border-b-[1px] border-solid border-[#ffffff1a]">
                       {data.status && (
-                        <div className="infoItem">
-                          <span className="text bold">Status:</span>
-                          <div className="text">{data.status}</div>
+                        <div className="infoItem mr-[10px] flex flex-wrap flex-row">
+                          <span className="text bold mr-[10px]  leading-6 font-semibold opacity-100 ">
+                            Status:
+                          </span>
+                          <div className="text mr-[10px] opacity-50 leading-6">
+                            {data.status}
+                          </div>
                         </div>
                       )}
                       {data.release_date && (
-                        <div className="infoItem">
-                          <span className="text bold">Release:</span>
-                          <div className="text">
+                        <div className="infoItem  mr-[10px] flex flex-wrap flex-row">
+                          <span className="text bold mr-[10px]  leading-6 font-semibold opacity-100 ">
+                            Release:
+                          </span>
+                          <div className="text mr-[10px] opacity-50 leading-6">
                             {dayjs(data.release_date).format("MMM D, YYYY")}
                           </div>
                         </div>
                       )}
                       {data.runtime && (
-                        <div className="infoItem">
-                          <span className="text bold">Runtime:</span>
-                          <div className="text">
+                        <div className="infoItem  mr-[10px] flex flex-wrap flex-row">
+                          <span className="text bold mr-[10px]  leading-6 font-semibold opacity-100 ">
+                            Runtime:
+                          </span>
+                          <div className="text mr-[10px] opacity-50 leading-6">
                             {toHoursAndMinutes(data.runtime)}
                           </div>
                         </div>
                       )}
                     </div>
                     {director?.length > 0 && (
-                      <div className="info">
-                        <span className="text bold">Director:</span>
-                        <span className="text">
+                      <div className="info border-b-[1px] border-solid border-[#ffffff1a]">
+                        <span className="text bold mr-[10px]  leading-6 font-semibold opacity-100">
+                          Director:
+                        </span>
+                        <span className="text mr-[10px] opacity-50 leading-6">
                           {director.map((d, i) => (
                             <span key={i}>
                               {d.name}
@@ -119,10 +145,12 @@ const DetailBanner = ({ video, crew }) => {
                         </span>
                       </div>
                     )}
-                    {writer.length > 0 && (
-                      <div className="info">
-                        <span className="text bold">Writer:</span>
-                        <span className="text">
+                    {writer?.length > 0 && (
+                      <div className="info border-b-[1px] border-solid border-[#ffffff1a]">
+                        <span className="text bold mr-[10px]  leading-6 font-semibold opacity-100">
+                          Writer:
+                        </span>
+                        <span className="text mr-[10px] opacity-50 leading-6">
                           {writer.map((d, i) => (
                             <span key={i}>
                               {d.name}
@@ -133,9 +161,11 @@ const DetailBanner = ({ video, crew }) => {
                       </div>
                     )}
                     {data.created_by > 0 && (
-                      <div className="info">
-                        <span className="text bold">Created By:</span>
-                        <span className="text">
+                      <div className="info border-b-[1px] border-solid border-[#ffffff1a]">
+                        <span className="text bold mr-[10px]  leading-6 font-semibold opacity-100">
+                          Created By:
+                        </span>
+                        <span className="text mr-[10px] opacity-50 leading-6">
                           {data.created_by.map((d, i) => (
                             <span key={i}>
                               {d.name}
