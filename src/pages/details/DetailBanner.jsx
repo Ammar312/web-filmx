@@ -9,6 +9,7 @@ import CirkleRating from "../../components/CirkleRating";
 import Genres from "../../components/Genres";
 import Img from "../../components/lazyLoadImg/Img";
 import PosterFallBack from "../../assets/no-poster.png";
+import VideoPopup from "../../components/VideoPopup";
 import { PlayIcon } from "./PlayBtn";
 import "./detail.css";
 
@@ -82,11 +83,19 @@ const DetailBanner = ({ video, crew }) => {
                         onClick={() => {
                           setShow(true);
                           setVideoId(video.key);
+                          console.log("working");
+                          console.log(video);
                         }}
                       >
-                        <span className="w-[60px] md:w-[80px]">
+                        <div
+                          className="w-[60px] md:w-[80px]"
+                          //  onClick={()=>{
+                          //     setShow(true);
+                          //     setVideoId(video.key)
+                          // }}
+                        >
                           <PlayIcon />
-                        </span>
+                        </div>
                         <span className="text text-xl transition-all duration-700 ease-in-out hover:text-pink">
                           Watch Trailer
                         </span>
@@ -131,7 +140,7 @@ const DetailBanner = ({ video, crew }) => {
                       )}
                     </div>
                     {director?.length > 0 && (
-                      <div className="info border-b-[1px] border-solid border-[#ffffff1a]">
+                      <div className="info border-b-[1px] border-solid border-[#ffffff1a] py-[2px]">
                         <span className="text bold mr-[10px]  leading-6 font-semibold opacity-100">
                           Director:
                         </span>
@@ -139,14 +148,14 @@ const DetailBanner = ({ video, crew }) => {
                           {director.map((d, i) => (
                             <span key={i}>
                               {d.name}
-                              {director.length - 1 !== 1 && ", "}
+                              {director.length - 1 !== i && ", "}
                             </span>
                           ))}
                         </span>
                       </div>
                     )}
                     {writer?.length > 0 && (
-                      <div className="info border-b-[1px] border-solid border-[#ffffff1a]">
+                      <div className="info border-b-[1px] border-solid border-[#ffffff1a] py-[2px]">
                         <span className="text bold mr-[10px]  leading-6 font-semibold opacity-100">
                           Writer:
                         </span>
@@ -154,14 +163,14 @@ const DetailBanner = ({ video, crew }) => {
                           {writer.map((d, i) => (
                             <span key={i}>
                               {d.name}
-                              {writer.length - 1 !== 1 && ", "}
+                              {writer.length - 1 !== i && ", "}
                             </span>
                           ))}
                         </span>
                       </div>
                     )}
                     {data.created_by > 0 && (
-                      <div className="info border-b-[1px] border-solid border-[#ffffff1a]">
+                      <div className="info border-b-[1px] border-solid border-[#ffffff1a] py-[2px]">
                         <span className="text bold mr-[10px]  leading-6 font-semibold opacity-100">
                           Created By:
                         </span>
@@ -169,7 +178,7 @@ const DetailBanner = ({ video, crew }) => {
                           {data.created_by.map((d, i) => (
                             <span key={i}>
                               {d.name}
-                              {data.created_by.length - 1 !== 1 && ", "}
+                              {data.created_by.length - 1 !== i && ", "}
                             </span>
                           ))}
                         </span>
@@ -177,6 +186,12 @@ const DetailBanner = ({ video, crew }) => {
                     )}
                   </div>
                 </div>
+                <VideoPopup
+                  show={show}
+                  setShow={setShow}
+                  videoId={videoId}
+                  setVideoId={setVideoId}
+                />
               </ContentWrapper>
             </React.Fragment>
           )}
