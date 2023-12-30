@@ -82,7 +82,7 @@ const DetailBanner = ({ video, crew }) => {
                         className="playbtn flex items-center gap-5 cursor-pointer"
                         onClick={() => {
                           setShow(true);
-                          setVideoId(video.key);
+                          setVideoId(video?.key);
                           console.log("working");
                           console.log(video);
                         }}

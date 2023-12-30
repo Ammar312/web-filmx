@@ -5,12 +5,12 @@ import useFetch from "../../hook/useFetch";
 import DetailBanner from "./DetailBanner";
 
 const Details = () => {
-  const [official, setOfficial] = useState(null);
   const { mediaType, id } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}/videos`);
   const { data: credits, loading: creditsLoading } = useFetch(
     `/${mediaType}/${id}/credits`
   );
+  const [official, setOfficial] = useState(null);
 
   useEffect(() => {
     if (data?.results) {
@@ -18,6 +18,8 @@ const Details = () => {
         if (data?.results?.[v].name === "Official Trailer") {
           setOfficial(data?.results?.[v]);
           break;
+        } else {
+          setOfficial(data?.results?.[data?.results?.length - 1]);
         }
       }
     }

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import ReactPlayer from "react-player/lazy";
+import { VscChromeClose } from "react-icons/vsc";
 
 const VideoPopup = ({ show, setShow, videoId, setVideoId }) => {
   const hidePopup = () => {
@@ -28,7 +29,7 @@ const VideoPopup = ({ show, setShow, videoId, setVideoId }) => {
           className="absolute -top-5 right-0 text-white cursor-pointer"
           onClick={hidePopup}
         >
-          Close
+          <VscChromeClose />
         </span>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${videoId}`}
