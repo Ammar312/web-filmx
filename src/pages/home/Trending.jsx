@@ -10,7 +10,7 @@ const Trending = () => {
   const onTabChange = (tab) => {
     setEndPoint(tab === "Day" ? "day" : "week");
   };
-
+  console.log(data?.results);
   return (
     <div className=" relative mb-[70px]">
       <ContentWrapper>
