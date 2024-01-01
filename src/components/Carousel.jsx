@@ -12,6 +12,7 @@ import PosterFallBack from "../assets/no-poster.png";
 
 import Genres from "./Genres";
 import CirkleRating from "./CirkleRating";
+import "./Carousel.css";
 
 const Carousel = ({ data, loading, endpoint, title }) => {
   const carouselContainer = useRef();
@@ -43,19 +44,23 @@ const Carousel = ({ data, loading, endpoint, title }) => {
   };
 
   return (
-    <div className="mb-[50px]">
+    <div className="mb-[50px] carousel">
       <ContentWrapper>
         {title && (
           <div className="text-2xl text-white mb-5 font-normal">{title}</div>
         )}
-        <BsFillArrowLeftCircleFill
-          className="left-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80"
-          onClick={() => navigation("left")}
-        />
-        <BsFillArrowRightCircleFill
-          className="right-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80"
-          onClick={() => navigation("right")}
-        />
+        {data?.length > 5 && (
+          <BsFillArrowLeftCircleFill
+            className="left-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80"
+            onClick={() => navigation("left")}
+          />
+        )}
+        {data?.length > 5 && (
+          <BsFillArrowRightCircleFill
+            className="right-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80"
+            onClick={() => navigation("right")}
+          />
+        )}
 
         {!loading ? (
           <div

@@ -4,7 +4,6 @@ import ContentWrapper from "../../components/ContentWrapper";
 import { PlayIcon } from "./PlayBtn";
 import VideoPopup from "../../components/VideoPopup";
 import Img from "../../components/lazyLoadImg/Img";
-// import "./Video.css";
 
 const VideoSection = ({ data, loading }) => {
   const [show, setShow] = useState(false);
@@ -42,7 +41,7 @@ const VideoSection = ({ data, loading }) => {
                       src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
                     />
                   </span>
-                  <span className=" absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] border-2 w-[70px] h-[70px]">
+                  <span className=" absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[50px] h-[50px]">
                     <PlayIcon />
                   </span>
                 </div>
