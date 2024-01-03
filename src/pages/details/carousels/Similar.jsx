@@ -8,12 +8,16 @@ const Similar = ({ mediaType, id }) => {
   console.log("Similar", data);
   return (
     <div>
-      <Carousel
-        title={title}
-        data={data?.results}
-        loading={loading}
-        endpoint={mediaType}
-      />
+      {data?.results?.length !== 0 ? (
+        <Carousel
+          title={title}
+          data={data?.results}
+          loading={loading}
+          endpoint={mediaType}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

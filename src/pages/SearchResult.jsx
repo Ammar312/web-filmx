@@ -13,23 +13,24 @@ const SearchResult = () => {
   const [loading, setLoading] = useState(false);
   const { query } = useParams();
 
-  const fetchInitialData = () => {
+  const fetchInitialData = async () => {
     setLoading(true);
     try {
-      const response = fetchApi(
+      const response = await fetchApi(
         `/search/multi?query=${query}&include_adult=true&page=${pageNum}`
       );
       setData(response);
       setPageNum((prev) => prev + 1);
       setLoading(false);
+      console.log("searchresult: ", response);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const fetchNextPageData = () => {
+  const fetchNextPageData = async () => {
     try {
-      const response = fetchApi(
+      const response = await fetchApi(
         `/search/multi?query=${query}&include_adult=true&page=${pageNum}`
       );
       if (data?.results) {

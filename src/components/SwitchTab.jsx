@@ -31,7 +31,7 @@ const SwitchTab = ({ data, onTabChange }) => {
           );
         })}
         <span
-          className={`h-[30px] w-[100px] rounded-2xl bg-gradient absolute transition-[left] ease-expo duration-500 left-[${left}px]`}
+          className={`h-[30px] w-[100px] rounded-2xl bg-gradient absolute transition-all !ease-expo duration-500 !left-[${left}px]`}
         />
       </div>
     </div>
