@@ -1,0 +1,13 @@
+.react-select-container .react-select__control {
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background-color: white;
+  border-radius: 6px;
+}
+.react-select-container
+  .react-select__menu
+  .react-select__menu-list
+  .react-select__option {
+  cursor: pointer;
+}

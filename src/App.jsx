@@ -7,7 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/home/Home";
 import Details from "./pages/details/Details";
-import Explore from "./pages/Explore";
+import Explore from "./pages/explore/Explore";
 import PageNotFound from "./pages/PageNotFound";
 import SearchResult from "./pages/SearchResult";
 import { fetchApi } from "./components/Api";

@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Select from "react-select";
 
-import useFetch from "../hook/useFetch";
-import { fetchApi } from "../components/Api";
-import ContentWrapper from "../components/ContentWrapper";
-import MovieCard from "..//components/MovieCard";
-import Spinner from "../components/Spinner";
+import useFetch from "../../hook/useFetch";
+import { fetchApi } from "../../components/Api";
+import ContentWrapper from "../../components/ContentWrapper";
+import MovieCard from "../../components/MovieCard";
+import Spinner from "../../components/Spinner";
+
+import "./Explore.css";
 
 let filters = {};
 
@@ -110,7 +112,7 @@ const Explore = () => {
               getOptionLabel={(option) => option.name}
               getOptionValue={(option) => option.id}
               onChange={onChange}
-              placeholder="Select genres"
+              placeholder="Select Genres"
               className="react-select-container genresDD w-full md:max-w-[500px] md:min-w-[250px]"
               classNamePrefix="react-select"
             />
@@ -120,9 +122,10 @@ const Explore = () => {
               options={sortbyData}
               onChange={onChange}
               isClearable={true}
-              placeholder="Sort by"
+              placeholder="Sort By"
               className="react-select-container sortbyDD w-full flex-shrink-0 md:w-[250px]"
               classNamePrefix="react-select"
+              menuShouldBlockScroll={true}
             />
           </div>
         </div>
