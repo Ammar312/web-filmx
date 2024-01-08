@@ -75,7 +75,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
         )}
         {data?.length > 5 && (
           <BsFillArrowLeftCircleFill
-            className={`left-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80 ${
+            className={`left-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-80 z-10 hidden md:block hover:opacity-100 ${
               hide.left ? "invisible" : ""
             } `}
             onClick={() => navigation("left")}
@@ -83,7 +83,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
         )}
         {data?.length > 5 && (
           <BsFillArrowRightCircleFill
-            className={`right-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80 ${
+            className={`right-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-80 z-10 hidden md:block hover:opacity-100 ${
               hide.right ? "invisible" : ""
             }`}
             onClick={() => navigation("right")}

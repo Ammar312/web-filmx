@@ -29,9 +29,20 @@ export default {
           "0%": { transform: "translateY(-130%)" },
           "100%": { transform: "translateY(0)" },
         },
+        zoomInShade: {
+          "0%": {
+            transform: "scale(0)",
+          },
+          "100%": {
+            transform: "scale(2)",
+            opacity: 0,
+          },
+        },
       },
       animation: {
         mobileMenu: "mobileMenu 0.3s ease forwards ",
+        zoomInShade: "zoominShade 1s cubic-bezier(0, 0, 0.2, 1) infinite",
+        zoomAnimation: " ping 10s cubic-bezier(0, 0, 0.2, 1) infinite",
       },
       boxShadow: {
         shad: "0 0 0.625em #da2f68",

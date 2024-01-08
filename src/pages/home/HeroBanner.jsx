@@ -28,8 +28,8 @@ const HeroBanner = () => {
   return (
     <div className="w-full h-[450px] md:h-[700px] flex items-center relative bg-black">
       {!loading && (
-        <div className=" w-full h-full absolute top-0 left-0 opacity-50 overflow-hidden">
-          <Img src={background || ""} />
+        <div className=" w-full h-full absolute top-0 left-0 opacity-50 overflow-hidden  ">
+          <Img src={background || ""} className={`animate-zoomAnimation`} />
         </div>
       )}
 
