@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
@@ -16,8 +16,10 @@ import "./Carousel.css";
 
 const Carousel = ({ data, loading, endpoint, title }) => {
   const carouselContainer = useRef();
+
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
+  const [hide, setHide] = useState({ left: true, right: false });
 
   const navigation = (direction) => {
     const container = carouselContainer.current;
@@ -29,8 +31,30 @@ const Carousel = ({ data, loading, endpoint, title }) => {
       left: scrollAmount,
       behavior: "smooth",
     });
-    console.log("navigation", carouselContainer);
+    console.log("scrollWidth", container.scrollWidth);
+    console.log("scrollAmount", scrollAmount);
+    console.log("scrollLeft", container.scrollLeft);
+    console.log("offsetWidth", container.offsetWidth);
   };
+  // Function to check if the container has reached the end
+  useEffect(() => {
+    const container = carouselContainer.current;
+
+    const handleScroll = () => {
+      const isStartReached = container.scrollLeft <= 0;
+      const isEndReached =
+        container.scrollLeft + container.offsetWidth >= container.scrollWidth;
+      setHide({
+        left: isStartReached,
+        right: isEndReached,
+      });
+    };
+    container.addEventListener("scroll", handleScroll);
+    return () => {
+      container.removeEventListener("scroll", handleScroll);
+    };
+  }, [carouselContainer]);
+
   const skItem = () => {
     return (
       <div className="w-[125px] shrink-0 md:w-[calc(20%-15px)] lg:w-[calc(20%-16px)]">
@@ -51,13 +75,17 @@ const Carousel = ({ data, loading, endpoint, title }) => {
         )}
         {data?.length > 5 && (
           <BsFillArrowLeftCircleFill
-            className="left-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80"
+            className={`left-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80 ${
+              hide.left ? "invisible" : ""
+            } `}
             onClick={() => navigation("left")}
           />
         )}
         {data?.length > 5 && (
           <BsFillArrowRightCircleFill
-            className="right-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80"
+            className={`right-[30px] text-[30px] text-white absolute top-[44%] translate-y-[-50%] cursor-pointer opacity-50 z-10 hidden md:block hover:opacity-80 ${
+              hide.right ? "invisible" : ""
+            }`}
             onClick={() => navigation("right")}
           />
         )}
@@ -74,7 +102,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
               return (
                 <div
                   key={item.id}
-                  className="w-[125px] cursor-pointer shrink-0 md:w-[calc(20%-15px)] lg:w-[calc(20%-16px)]"
+                  className="w-[125px] cursor-pointer shrink-0 md:w-[calc(20%-15px)] lg:w-[calc(20%-16px)] overflow-hidden"
                   onClick={() =>
                     navigate(`/${item.media_type || endpoint}/${item.id}`)
                   }
