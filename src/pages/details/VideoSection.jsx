@@ -20,47 +20,49 @@ const VideoSection = ({ data, loading }) => {
 
   return (
     <div className="videoSection relative mb-[50px]">
-      <ContentWrapper>
-        <div className="SectionHeading text-2xl text-white mb-[25px]">
-          OFFICIAL VIDEOS
-        </div>
-        {!loading ? (
-          <div className="videos flex gap-[10px] overflow-x-auto -mr-5 -ml-5 py-0 px-5 md:gap-5 md:m-0 md:p-0">
-            {data?.results?.map((video) => (
-              <div
-                key={video.id}
-                className="videoItem w-[150px] shrink-0 cursor-pointer md:w-[25%]"
-                onClick={() => {
-                  setVideoId(video.key);
-                  setShow(true);
-                }}
-              >
-                <div className="videoThumbnail mb-[15px] relative">
-                  <span className="w-full block rounded-xl transition-all duration-700 ease-in-out hover:opacity-50">
-                    <Img
-                      src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
-                    />
-                  </span>
-                  <span className=" absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[50px] h-[50px]">
-                    <PlayIcon />
-                  </span>
-                </div>
-                <div className="videoTitle text-white text-sm md:text-base">
-                  {video.name}
-                </div>
-              </div>
-            ))}
+      {data?.results?.length > 0 && (
+        <ContentWrapper>
+          <div className="SectionHeading text-2xl text-white mb-[25px]">
+            OFFICIAL VIDEOS
           </div>
-        ) : (
-          <div className="videoSkleton flex gap-[10px] overflow-x-auto -mr-5 -ml-5 py-0 px-5 md:gap-5 md:m-0 md:p-0">
-            {loadingSkeleton()}
-            {loadingSkeleton()}
-            {loadingSkeleton()}
-            {loadingSkeleton()}
-            {loadingSkeleton()}
-          </div>
-        )}
-      </ContentWrapper>
+          {!loading ? (
+            <div className="listItems flex gap-[10px] overflow-x-auto -mr-5 -ml-5 py-0 px-5 md:gap-5 md:m-0 md:p-0 ">
+              {data?.results?.map((video) => (
+                <div
+                  key={video.id}
+                  className="videoItem w-[150px] shrink-0 cursor-pointer md:w-[25%]"
+                  onClick={() => {
+                    setVideoId(video.key);
+                    setShow(true);
+                  }}
+                >
+                  <div className="videoThumbnail mb-[15px] relative">
+                    <span className="w-full block rounded-xl transition-all duration-700 ease-in-out hover:opacity-50">
+                      <Img
+                        src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
+                      />
+                    </span>
+                    <span className=" absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[50px] h-[50px]">
+                      <PlayIcon />
+                    </span>
+                  </div>
+                  <div className="videoTitle text-white text-sm md:text-base">
+                    {video.name}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="videoSkleton flex gap-[10px] overflow-x-auto -mr-5 -ml-5 py-0 px-5 md:gap-5 md:m-0 md:p-0">
+              {loadingSkeleton()}
+              {loadingSkeleton()}
+              {loadingSkeleton()}
+              {loadingSkeleton()}
+              {loadingSkeleton()}
+            </div>
+          )}
+        </ContentWrapper>
+      )}
       <VideoPopup
         show={show}
         setShow={setShow}

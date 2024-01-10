@@ -38,6 +38,7 @@ const SearchResult = () => {
       } else {
         setData(response);
       }
+      setPageNum((prev) => prev + 1);
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +57,7 @@ const SearchResult = () => {
             <>
               <div className="pageTitle text-2xl text-white mb-[50px]">
                 {`Search ${
-                  data?.results > 1 ? "results" : "result"
+                  data?.results?.length > 1 ? "results" : "result"
                 } of '${query}'`}
               </div>
               <InfiniteScroll

@@ -40,7 +40,7 @@ const MovieCard = ({ data, fromSearch, mediaType }) => {
         )}
       </div>
       <div className="textBlock text-white flex flex-col">
-        <span className="title text-base mb-[10px] line-clamp-1 text-ellipsis md:text-xl">
+        <span className="title text-base mb-[10px] line-clamp-1  text-ellipsis md:text-xl">
           {data.title || data.name}
         </span>
         <span className="date text-sm opacity-50">

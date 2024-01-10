@@ -79,7 +79,7 @@ const DetailBanner = ({ video, crew }) => {
                         <CirkleRating rating={data.vote_average.toFixed(1)} />
                       </span>
                       <div
-                        className="playbtn flex items-center gap-5 cursor-pointer"
+                        className="playbtn flex items-center gap-5 cursor-pointer hover:text-pink"
                         onClick={() => {
                           setShow(true);
                           setVideoId(video?.key);
@@ -88,7 +88,7 @@ const DetailBanner = ({ video, crew }) => {
                         }}
                       >
                         <div
-                          className="w-[60px] md:w-[80px]"
+                          className="w-[60px] md:w-[80px] hover:text-pink"
                           //  onClick={()=>{
                           //     setShow(true);
                           //     setVideoId(video.key)
@@ -96,7 +96,7 @@ const DetailBanner = ({ video, crew }) => {
                         >
                           <PlayIcon />
                         </div>
-                        <span className="text text-xl transition-all duration-700 ease-in-out hover:text-pink">
+                        <span className="text text-xl transition-all duration-700 ease-in-out">
                           Watch Trailer
                         </span>
                       </div>

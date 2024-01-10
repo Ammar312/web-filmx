@@ -42,7 +42,7 @@ export default {
       animation: {
         mobileMenu: "mobileMenu 0.3s ease forwards ",
         zoomInShade: "zoominShade 1s cubic-bezier(0, 0, 0.2, 1) infinite",
-        zoomAnimation: " ping 10s cubic-bezier(0, 0, 0.2, 1) infinite",
+        zoomAnimation: " ping 18s cubic-bezier(0, 0, 0.2, 1) infinite",
       },
       boxShadow: {
         shad: "0 0 0.625em #da2f68",
