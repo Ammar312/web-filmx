@@ -51,7 +51,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
     };
     container && container.addEventListener("scroll", handleScroll);
     return () => {
-      container.removeEventListener("scroll", handleScroll);
+      container && container.removeEventListener("scroll", handleScroll);
     };
   }, [carouselContainer]);
 

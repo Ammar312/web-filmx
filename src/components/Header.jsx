@@ -6,6 +6,7 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 
 import ContentWrapper from "./ContentWrapper";
 import logo from "../assets/movix-logo.svg";
+import nelogo from "../assets/nelogo.png";
 
 const Header = () => {
   const [show, setShow] = useState("top");
@@ -73,7 +74,7 @@ const Header = () => {
         <div className=" flex justify-between items-center">
           <div className=" cursor-pointer">
             <Link to="/">
-              <img src={logo} alt="logo" className="h-[52px]" />
+              <img src={nelogo} alt="logo" className="h-[52px] md:h-[62px]" />
             </Link>
           </div>
           <ul

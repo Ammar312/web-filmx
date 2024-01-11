@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const SwitchTab = ({ data, onTabChange }) => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -13,6 +13,10 @@ const SwitchTab = ({ data, onTabChange }) => {
     onTabChange(tab, index);
     console.log("leftState", left);
   };
+  // useEffect(() => {
+  //   // Update the left position when selectedTab changes
+  //   setLeft(selectedTab * 100);
+  // }, [selectedTab]);
 
   return (
     <div className="h-[34px] bg-white rounded-[20px] p-[2px]">
@@ -21,8 +25,8 @@ const SwitchTab = ({ data, onTabChange }) => {
           return (
             <span
               key={index}
-              className={`flex items-center justify-center w-[100px] h-full text-black text-sm relative z-10 cursor-pointer transition-colors ease-linear duration-300 ${
-                selectedTab === index ? " text-white" : ""
+              className={`flex items-center justify-center w-[100px] h-full  text-sm relative z-10 cursor-pointer transition-colors ease-linear duration-300 ${
+                selectedTab === index ? " text-white" : "text-black"
               }`}
               onClick={() => activeTab(tab, index)}
             >
@@ -30,8 +34,20 @@ const SwitchTab = ({ data, onTabChange }) => {
             </span>
           );
         })}
+        {/* <span
+          className={`h-[30px] w-[100px] rounded-2xl bg-gradient absolute transition-all ease-out duration-500 left-[${left}px]`}
+        /> */}
         <span
-          className={`h-[30px] w-[100px] rounded-2xl bg-gradient absolute transition-all !ease-expo duration-500 !left-[${left}px]`}
+          style={{
+            height: "30px",
+            width: "100px",
+            borderRadius: "20px",
+            background:
+              "linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%)",
+            position: "absolute",
+            transition: "left 0.3s ease-out",
+            left: `${left}px`,
+          }}
         />
       </div>
     </div>

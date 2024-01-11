@@ -73,6 +73,8 @@ const Explore = () => {
   }, [mediaType]);
 
   const onChange = (selectedItems, action) => {
+    console.log("selectedItems: ", selectedItems);
+    console.log("action: ", action);
     if (action.name === "sortby") {
       setSortby(selectedItems);
       if (action.action !== "clear") {
@@ -86,12 +88,14 @@ const Explore = () => {
       setGenre(selectedItems);
       if (action.action !== "clear") {
         let genreId = selectedItems.map((g) => g.id);
+        console.log(genreId);
         genreId = JSON.stringify(genreId).slice(1, -1);
         filters.with_genres = genreId;
       } else {
         delete filters.with_genres;
       }
     }
+    console.log(filters);
     setPageNum(1);
     fetchInitialData();
   };
