@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Select from "react-select";
@@ -32,6 +32,8 @@ const Explore = () => {
   const [genre, setGenre] = useState(null);
   const [sortby, setSortby] = useState(null);
   const { mediaType } = useParams();
+  const containerRef = useRef();
+  // console.log(containerRef.current.scrollY);
 
   const { data: genresData } = useFetch(`/genre/${mediaType}/list`);
 
@@ -100,7 +102,7 @@ const Explore = () => {
     fetchInitialData();
   };
   return (
-    <div className="explorePage min-h-[700px] pt-[100px]">
+    <div className="explorePage min-h-[700px] pt-[100px]" ref={containerRef}>
       <ContentWrapper>
         <div className="pageHeader flex justify-between mb-[25px] flex-col md:flex-row">
           <div className="pageTitle text-2xl text-white mb-5 md:m-0">

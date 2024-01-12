@@ -5,7 +5,6 @@ import { VscChromeClose } from "react-icons/vsc";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 
 import ContentWrapper from "./ContentWrapper";
-import logo from "../assets/movix-logo.svg";
 import nelogo from "../assets/nelogo.png";
 
 const Header = () => {
@@ -85,7 +84,7 @@ const Header = () => {
             }`}
           >
             <li
-              className={`h-[60px] flex items-center mx-4 text-white font-bold relative hover:text-red-500 ${
+              className={`h-[60px] flex items-center mx-4 text-white font-bold relative hover:text-orange ${
                 mobileMenu && "menuItemMobile"
               }`}
               onClick={() => {
@@ -95,7 +94,7 @@ const Header = () => {
               Movies
             </li>
             <li
-              className={`h-[60px] flex items-center mx-4 text-white font-bold relative hover:text-red-500 ${
+              className={`h-[60px] flex items-center mx-4 text-white font-bold relative hover:text-orange ${
                 mobileMenu && "menuItemMobile"
               }`}
               onClick={() => {

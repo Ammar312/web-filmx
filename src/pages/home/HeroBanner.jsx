@@ -53,7 +53,7 @@ const HeroBanner = () => {
             />
             <button
               type="submit"
-              className="w-[100px] h-[50px] bg-gradient text-white outline-none border-none rounded-[0_6px_6px_0] text-base cursor-pointer md:w-[150px] md:h-[60px] md:text-lg"
+              className="w-[100px] h-[50px] gradient text-white outline-none border-none rounded-[0_6px_6px_0] text-base cursor-pointer md:w-[150px] md:h-[60px] md:text-lg"
               onClick={searchHandler}
             >
               Search

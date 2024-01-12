@@ -43,7 +43,7 @@ const SwitchTab = ({ data, onTabChange }) => {
             width: "100px",
             borderRadius: "20px",
             background:
-              "linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%)",
+              "linear-gradient(98.37deg, #db7c00 0.99%, #ffe08a 100%)",
             position: "absolute",
             transition: "left 0.3s ease-out",
             left: `${left}px`,

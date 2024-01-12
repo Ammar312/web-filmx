@@ -17,7 +17,7 @@ const SearchResult = () => {
     setLoading(true);
     try {
       const response = await fetchApi(
-        `/search/multi?query=${query}&include_adult=true&page=${pageNum}`
+        `/search/multi?query=${query}&page=${pageNum}`
       );
       setData(response);
       setPageNum((prev) => prev + 1);
@@ -31,7 +31,7 @@ const SearchResult = () => {
   const fetchNextPageData = async () => {
     try {
       const response = await fetchApi(
-        `/search/multi?query=${query}&include_adult=true&page=${pageNum}`
+        `/search/multi?query=${query}&page=${pageNum}`
       );
       if (data?.results) {
         setData({ ...data, results: [...data?.results, ...response.results] });

@@ -22,7 +22,8 @@ export default {
         orange: "#f89e00",
       },
       backgroundImage: {
-        gradient: "linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%)",
+        gradient: "linear-gradient(98.37deg, #db7c00 0.99%, #ffe08a 100%)",
+        // gradient: "linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%)",
       },
       keyframes: {
         mobileMenu: {

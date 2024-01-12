@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaGithub, FaWhatsapp, FaTwitter, FaLinkedin } from "react-icons/fa";
 import ContentWrapper from "./ContentWrapper";
 
 const Footer = () => {
@@ -36,18 +31,30 @@ const Footer = () => {
             news
           </div>
           <div className="flex items-center justify-center gap-[10px]">
-            <span className="w-[50px] h-[50px] rounded-[50%] bg-black flex items-center justify-center cursor-pointer transition ease-linear duration-[0.3s] hover:shadow-shad hover:text-pink">
-              <FaFacebookF />
-            </span>
-            <span className="w-[50px] h-[50px] rounded-[50%] bg-black flex items-center justify-center cursor-pointer transition ease-linear duration-[0.3s] hover:shadow-[0_0_0.625em_#da2f68] hover:text-pink">
-              <FaInstagram />
-            </span>
-            <span className="w-[50px] h-[50px] rounded-[50%] bg-black flex items-center justify-center cursor-pointer transition ease-linear duration-[0.3s] hover:shadow-shad hover:text-pink">
+            <a
+              href="https://github.com/Ammar312/"
+              target="_blank"
+              className="w-[50px] h-[50px] rounded-[50%] bg-black flex items-center justify-center cursor-pointer transition ease-linear duration-[0.3s] hover:shadow-shad hover:text-pink"
+            >
+              <FaGithub />
+            </a>
+            <a
+              href=" https://wa.me/3104160942"
+              target="_blank"
+              className="w-[50px] h-[50px] rounded-[50%] bg-black flex items-center justify-center cursor-pointer transition ease-linear duration-[0.3s] hover:shadow-[0_0_0.625em_#da2f68] hover:text-pink"
+            >
+              <FaWhatsapp />
+            </a>
+            <a className="w-[50px] h-[50px] rounded-[50%] bg-black flex items-center justify-center cursor-pointer transition ease-linear duration-[0.3s] hover:shadow-shad hover:text-pink">
               <FaTwitter />
-            </span>
-            <span className="w-[50px] h-[50px] rounded-[50%] bg-black flex items-center justify-center cursor-pointer transition ease-linear duration-[0.3s] hover:shadow-shad hover:text-pink">
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ammar-ul-mustafa-728b5820b/"
+              target="_blank"
+              className="w-[50px] h-[50px] rounded-[50%] bg-black flex items-center justify-center cursor-pointer transition ease-linear duration-[0.3s] hover:shadow-shad hover:text-pink"
+            >
               <FaLinkedin />
-            </span>
+            </a>
           </div>
         </div>
       </ContentWrapper>
