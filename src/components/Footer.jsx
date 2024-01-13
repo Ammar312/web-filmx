@@ -1,5 +1,6 @@
 import React from "react";
 import { FaGithub, FaWhatsapp, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import ContentWrapper from "./ContentWrapper";
 
 const Footer = () => {
@@ -46,7 +47,7 @@ const Footer = () => {
               <FaWhatsapp />
             </a>
             <a className="w-[50px] h-[50px] rounded-[50%] bg-black flex items-center justify-center cursor-pointer transition ease-linear duration-[0.3s] hover:shadow-shad hover:text-pink">
-              <FaTwitter />
+              <FaXTwitter />
             </a>
             <a
               href="https://www.linkedin.com/in/ammar-ul-mustafa-728b5820b/"

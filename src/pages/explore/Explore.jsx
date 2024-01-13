@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Select from "react-select";
 
@@ -25,6 +25,7 @@ const sortbyData = [
   { value: "primary_release_date.asc", label: "Release Date Ascending" },
   { value: "original_title.asc", label: "Title (A-Z)" },
 ];
+
 const Explore = () => {
   const [data, setData] = useState(null);
   const [pageNum, setPageNum] = useState(1);
@@ -33,10 +34,7 @@ const Explore = () => {
   const [sortby, setSortby] = useState(null);
   const { mediaType } = useParams();
   const containerRef = useRef();
-  // console.log(containerRef.current.scrollY);
-
   const { data: genresData } = useFetch(`/genre/${mediaType}/list`);
-
   const fetchInitialData = async () => {
     setLoading(true);
     try {
@@ -44,7 +42,6 @@ const Explore = () => {
       setData(response);
       setPageNum((prev) => prev + 1);
       setLoading(false);
-      console.log("searchresult: ", response);
     } catch (error) {
       console.log(error);
     }
@@ -75,8 +72,6 @@ const Explore = () => {
   }, [mediaType]);
 
   const onChange = (selectedItems, action) => {
-    console.log("selectedItems: ", selectedItems);
-    console.log("action: ", action);
     if (action.name === "sortby") {
       setSortby(selectedItems);
       if (action.action !== "clear") {
@@ -90,14 +85,14 @@ const Explore = () => {
       setGenre(selectedItems);
       if (action.action !== "clear") {
         let genreId = selectedItems.map((g) => g.id);
-        console.log(genreId);
+
         genreId = JSON.stringify(genreId).slice(1, -1);
         filters.with_genres = genreId;
       } else {
         delete filters.with_genres;
       }
     }
-    console.log(filters);
+
     setPageNum(1);
     fetchInitialData();
   };
